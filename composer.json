@@ -1,0 +1,32 @@
+{
+  "name": "yii2deman/yii2deman-language-provider",
+  "description": "Language provider for modules",
+  "keywords": ["yii2", "language", "provider", "i18n"],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "support": {
+    "source": "https://github.com/yii2deman/yii2deman-language-provider",
+    "issues": "https://github.com/yii2deman/yii2deman-language-provider/issues"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "authors": [
+    {
+      "name": "Vladimir Kuprienko",
+      "email": "vldmr.kuprienko@gmail.com",
+      "role": "developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "yii2deman\\tools\\i18n\\": "src"
+    }
+  }
+}
