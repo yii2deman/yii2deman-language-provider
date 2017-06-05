@@ -5,7 +5,7 @@
  * @license BSD 3-Clause License
  */
 
-namespace ymaker\email\templates\providers;
+namespace yii2deman\tools\i18n;
 
 use yii\base\InvalidConfigException;
 use yii\base\Object;
