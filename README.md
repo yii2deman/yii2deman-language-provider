@@ -3,19 +3,19 @@ Language provider
 
 Language providers kit for modules based on Yii2 Framework
 
-* Configuration language provider
-* Database language provider
-* Base interface for your implementations
-
 [![Total Downloads](https://poser.pugx.org/yii2deman/yii2deman-language-provider/downloads)](https://packagist.org/packages/yii2deman/yii2deman-language-provider)
 [![Latest Stable Version](https://poser.pugx.org/yii2deman/yii2deman-language-provider/v/stable)](https://packagist.org/packages/yii2deman/yii2deman-language-provider)
 [![Latest Unstable Version](https://poser.pugx.org/yii2deman/yii2deman-language-provider/v/unstable)](https://packagist.org/packages/yii2deman/yii2deman-language-provider)
+
+* Configuration language provider
+* Database language provider
+* Base interface for your implementations
 
 Installation
 ------------
 Run command
 ```
-composer require yiimaker/yii2-social-share
+composer require yii2deman/yii2deman-language-provider
 ```
 or add
 ```json
