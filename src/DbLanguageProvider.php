@@ -65,7 +65,7 @@ class DbLanguageProvider implements LanguageProviderInterface
     public function getLanguages()
     {
         $languages = (new Query())
-            ->select([$this->localeField, $this->nameField])
+            ->select([$this->localeField, $this->labelField])
             ->from($this->tableName)
             ->all($this->db);
 
@@ -73,7 +73,7 @@ class DbLanguageProvider implements LanguageProviderInterface
         foreach ($languages as $language) {
             $result[] = [
                 'locale' => $language->{$this->localeField},
-                'label' => $language->{$this->nameField}
+                'label' => $language->{$this->labelField}
             ];
         }
 
@@ -86,7 +86,7 @@ class DbLanguageProvider implements LanguageProviderInterface
     public function getDefaultLanguage()
     {
         $language = (new Query())
-            ->select([$this->localeField, $this->nameField])
+            ->select([$this->localeField, $this->labelField])
             ->from($this->tableName)
             ->where([$this->defaultField => true])
             ->one($this->db);
@@ -94,7 +94,7 @@ class DbLanguageProvider implements LanguageProviderInterface
         return $language !== null
             ? [
                 'locale' => $language->{$this->localeField},
-                'label' => $language->{$this->nameField}
+                'label' => $language->{$this->labelField}
             ]
             : [];
     }
