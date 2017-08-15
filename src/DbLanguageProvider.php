@@ -50,6 +50,15 @@ class DbLanguageProvider implements LanguageProviderInterface
      */
     public $defaultField = 'is_default';
 
+    /**
+     * @var array
+     */
+    protected $_languages = [];
+    /**
+     * @var array
+     */
+    protected $_defaultLanguage = [];
+
 
     /**
      * @inheritdoc
@@ -64,20 +73,21 @@ class DbLanguageProvider implements LanguageProviderInterface
      */
     public function getLanguages()
     {
-        $languages = (new Query())
-            ->select([$this->localeField, $this->labelField])
-            ->from($this->tableName)
-            ->all($this->db);
+        if (empty($this->_languages)) {
+            $languages = (new Query())
+                ->select([$this->localeField, $this->labelField])
+                ->from($this->tableName)
+                ->all($this->db);
 
-        $result = [];
-        foreach ($languages as $language) {
-            $result[] = [
-                'locale' => $language->{$this->localeField},
-                'label' => $language->{$this->labelField}
-            ];
+            foreach ($languages as $language) {
+                $this->_languages[] = [
+                    'locale' => $language->{$this->localeField},
+                    'label' => $language->{$this->labelField}
+                ];
+            }
         }
 
-        return $result;
+        return $this->_languages;
     }
 
     /**
@@ -85,17 +95,33 @@ class DbLanguageProvider implements LanguageProviderInterface
      */
     public function getDefaultLanguage()
     {
-        $language = (new Query())
-            ->select([$this->localeField, $this->labelField])
-            ->from($this->tableName)
-            ->where([$this->defaultField => true])
-            ->one($this->db);
+        if (empty($this->_defaultLanguage)) {
+            $language = (new Query())
+                ->select([$this->localeField, $this->labelField])
+                ->from($this->tableName)
+                ->where([$this->defaultField => true])
+                ->one($this->db);
 
-        return $language !== null
-            ? [
-                'locale' => $language->{$this->localeField},
-                'label' => $language->{$this->labelField}
-            ]
-            : [];
+            $this->_defaultLanguage = ($language !== null)
+                ? ['locale' => $language->{$this->localeField}, 'label' => $language->{$this->labelField}]
+                : [];
+        }
+
+        return $this->_defaultLanguage;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getLanguageLabel($locale)
+    {
+        $languages = $this->getDefaultLanguage();
+        foreach ($languages as $language) {
+            if ($language['locale'] == $locale) {
+                return $languages['label'];
+            }
+        }
+
+        return null;
     }
 }

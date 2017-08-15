@@ -8,7 +8,7 @@
 namespace yii2deman\tools\i18n;
 
 /**
- * Interface for language providers
+ * Interface for language providers.
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @since 1.0
@@ -16,8 +16,9 @@ namespace yii2deman\tools\i18n;
 interface LanguageProviderInterface
 {
     /**
-     * Method should returns array with languages
-     * Example
+     * Method should returns array with languages.
+     *
+     * @example
      * ```php
      * return [
      *      [
@@ -27,22 +28,29 @@ interface LanguageProviderInterface
      *      // ...
      * ];
      * ```
-     *
      * @return array
      */
     public function getLanguages();
 
     /**
-     * Method should returns  array with default language
-     * Example
+     * Method should returns array with default language.
+     *
+     * @example
      * ```php
      * return [
      *      'label' => 'English',
      *      'locale' => 'en-US',
      * ];
      * ```
-     *
      * @return array
      */
     public function getDefaultLanguage();
+
+    /**
+     * Method should returns label by language locale.
+     *
+     * @param string $locale Language locale
+     * @return mixed
+     */
+    public function getLanguageLabel($locale);
 }

@@ -60,4 +60,18 @@ class ConfigLanguageProvider extends Object implements LanguageProviderInterface
     {
         return $this->defaultLanguage;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getLanguageLabel($locale)
+    {
+        foreach ($this->languages as $language) {
+            if ($language['locale'] == $locale) {
+                return $language['label'];
+            }
+        }
+
+        return null;
+    }
 }
