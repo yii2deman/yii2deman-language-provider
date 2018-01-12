@@ -1,6 +1,12 @@
 Language provider
 =================
 
+## This package is deprecated
+
+This package is deprecated. Use [motion/yii2-language-provier](https://github.com/motion-web-production/yii2-language-provider) instead.
+
+---
+
 Language providers kit for modules based on Yii2 Framework.
 
 [![Total Downloads](https://poser.pugx.org/yii2deman/yii2deman-language-provider/downloads)](https://packagist.org/packages/yii2deman/yii2deman-language-provider)
